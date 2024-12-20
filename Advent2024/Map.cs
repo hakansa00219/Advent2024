@@ -19,6 +19,23 @@ public static class Map
         Console.Write('\n');
         Console.Out.Flush();
     }
+    public static void Visualize(Node[,] map)
+    {
+        Console.Write('\n');
+        Console.Out.Flush();
+        for (var i = 0; i < map.GetLength(0); i++)
+        {
+            for (var j = 0; j < map.GetLength(1); j++)
+            {
+                Console.Write(map[i,j].Character);
+                Console.Out.Flush();
+            }
+            Console.Write('\n');
+            Console.Out.Flush();
+        }
+        Console.Write('\n');
+        Console.Out.Flush();
+    }
     public static char[,] ToMap(this char[][] s)
     {
         int rows = s.Length;
@@ -53,12 +70,30 @@ public static class Map
 
         return map;
     }
+    public static Node[,] ToNodeMap(this string[] s)
+    {
+        int rows = s.Length;
+        int cols = s[0].Length;
 
-    public static bool IsInside(this char[,] map, int x, int y)
+        Node[,] map = new Node[rows, cols];
+        
+        for (int x = 0; x < rows; x++)
+        {
+            for (int y = 0; y < cols; y++)
+            {
+                map[x, y] = new Node(x, y, s[x][y]);
+            }
+        }
+
+        return map;
+    }
+
+    
+    public static bool IsInside<T>(this T[,] map, int x, int y)
     {
         return x <= map.GetLength(0) - 1 && x >= 0 && y <= map.GetLength(1) - 1 && y >= 0;
     }
-    public static bool IsInside(this char[,] map, (int x,int y) pos)
+    public static bool IsInside<T>(this T[,] map, (int x,int y) pos)
     {
         return pos.x <= map.GetLength(0) - 1 && pos.x >= 0 && pos.y <= map.GetLength(1) - 1 && pos.y >= 0;
     }

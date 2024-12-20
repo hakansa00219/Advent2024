@@ -1,6 +1,7 @@
 using Advent2024.Day1;
 using Advent2024.Day10;
 using Advent2024.Day11;
+using Advent2024.Day12;
 using Advent2024.Day2;
 using Advent2024.Day3;
 using Advent2024.Day4;
@@ -25,7 +26,8 @@ class Program
         // Day8.Solution(out int part1, out int part2);
         // Day9.Solution(out long part1, out long part2);
         // Day10.Solution(out int part1, out int part2);
-        Day11.Solution(out long part1, out long part2);
+        // Day11.Solution(out long part1, out long part2);
+        Day12.Solution(out int part1, out int part2);
         
         Console.WriteLine("Solution 1:" + part1);
         Console.WriteLine("Solution 2:" + part2);
