@@ -6,7 +6,6 @@ public record struct Node(int X, int Y, char Character)
     public int Y { get; init; } = Y;
     public char Character { get; init; } = Character;
     public bool IsVisited { get; set; } = false;
-    public Dictionary<char,bool> borderChecks = new Dictionary<char, bool>();
     
     public bool Equals(Node obj)
     {
@@ -112,8 +111,8 @@ public record struct Node(int X, int Y, char Character)
         Console.WriteLine($"{Character} character edgeCount: {edgeCount}");
         return edgeCount;
     }
-    
-    public (int X, int Y, Direction D) TurnDirection(int posX, int posY, Direction direction)
+
+    private (int X, int Y, Direction D) TurnDirection(int posX, int posY, Direction direction)
     {
         return direction switch
         {
@@ -125,7 +124,7 @@ public record struct Node(int X, int Y, char Character)
     }
 
 
-    public (int X, int Y, Direction D) ContinueDirection(int posX, int posY, Direction direction)
+    private (int X, int Y, Direction D) ContinueDirection(int posX, int posY, Direction direction)
     {
         return direction switch
         {
@@ -134,14 +133,6 @@ public record struct Node(int X, int Y, char Character)
             Direction.Right => (posX, posY + 1, Direction.Right),
             Direction.Left => (posX, posY - 1, Direction.Left),
         };
-    }
-
-    public struct Direct
-    {
-        public Direction First;
-        public Direction Second;
-        public Direction Third;
-        public Direction Fourth;
     }
 
     public enum Direction

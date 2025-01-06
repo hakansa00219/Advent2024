@@ -2,7 +2,22 @@ namespace Advent2024;
 
 public static class Map
 {
-    public static void Visualize(char[,] map)
+    public static T[,] NewMap<T>(int cols, int rows, T defaultValue)
+    {
+        T[,] map = new T[rows, cols];
+        
+        for (int x = 0; x < rows; x++) // 7
+        {
+            for (int y = 0; y < cols; y++) // 11
+            {
+                map[x, y] = defaultValue;
+            }
+        }
+
+        return map;
+    }
+    
+    public static void Visualize<T>(T[,] map)
     {
         Console.Write('\n');
         Console.Out.Flush();
